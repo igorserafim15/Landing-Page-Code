@@ -1,0 +1,106 @@
+// --- COLORS ---
+$color-1: #1111ff; //Main
+$color-2: #eff5fb; //Bg
+
+$color-3: #566688; //Paragraph
+$color-3-1: #c5ddff; //Paragraph Light
+$color-4: #26256c;
+
+$color-footer: #070762; //Footer
+
+// --- TIPOGRAPH ----
+html {
+  font-size: 62.5%;
+  @media (max-width: 600px) {
+    font-size: 55%;
+  }
+  scroll-behavior: smooth;
+}
+
+Body {
+  font-family: 'Inter', sans-serif;
+}
+
+//Title
+@mixin title($size) {
+font-weight: 700;
+color: $color-1;
+  @if $size == h1 {
+    font-size: 7.2rem;
+    line-height: 8.2rem;
+  }
+  @else if $size == h2 {
+    font-size: 3.4rem;
+    line-height: 3.6rem;
+  }
+  @else if $size == h3 {
+    font-size: 2.8rem;
+    line-height: 3.2rem;
+  }
+  @else if $size == h4 {
+    font-size: 2.2rem;
+    line-height: 2.6rem;
+  }
+}
+
+h1 {@include title(h1);}
+h2 {@include title(h2);}
+h3 {@include title(h3);}
+h4 {@include title(h4);}
+
+//Paragraph
+@mixin paragraph($size) {
+  font-weight: 400;
+  color: $color-3;
+  @if $size == p16 {
+    font-size: 1.6rem;
+  }
+  @else if $size == p18 {
+    font-size: 1.8rem;
+  }
+  @else if $size == p20 {
+    font-size: 2.0rem;
+  }
+}
+
+p, span, cite {@include paragraph(p18);}
+ul, li, a {@include paragraph(p16);}
+form, label, input, button {@include paragraph(p16);}
+
+//BUTTONS
+@mixin btn($style) {
+  display: inline-block;
+  padding: 1.5rem 6.0rem;
+  border-radius: 100px;
+  transition: .2s;
+  @if $style == btn-dark {
+    background: $color-1;
+    color: #fff;
+    &:hover {
+      background: darken($color: $color-1, $amount: 10);
+    }
+  }
+  @else if $style == btn-light {
+    background: #fff;
+    color: $color-1;
+    &:hover {
+      background: darken($color: #fff, $amount: 10);
+    }
+  }
+}
+
+.btn-1 {@include btn(btn-dark)}
+.btn-2 {@include btn(btn-light)}
+
+//RESPONSIVE
+img {
+  display: block;
+  max-width: 100%;
+}
+
+$width-grid: 1140px;
+.container {
+  max-width: $width-grid;
+  margin-left: auto;
+  margin-right: auto;
+}
