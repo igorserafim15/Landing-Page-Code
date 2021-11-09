@@ -11,11 +11,12 @@ $color-footer: #070762; //Footer
 // --- TIPOGRAPH ----
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
   @media (max-width: 600px) {
     font-size: 55%;
   }
-  scroll-behavior: smooth;
 }
+
 
 Body {
   font-family: 'Inter', sans-serif;
@@ -103,4 +104,39 @@ $width-grid: 1140px;
   max-width: $width-grid;
   margin-left: auto;
   margin-right: auto;
+}
+
+//BREACKPOINTS
+$x-large: 1024px;
+$large: 900px;
+$medium: 770px;
+$small-up: 600px;
+$small: 425px;
+
+@mixin breackpoints($point) {
+  @if $point == xl {
+    @media only screen and (max-width: $x-large) {
+      @content;
+    }
+  }
+  @else if $point == lg {
+    @media only screen and (max-width: $large) {
+      @content;
+    }
+  }
+  @else if $point == md {
+    @media only screen and (max-width: $medium) {
+      @content;
+    }
+  }
+  @else if $point == sm-up {
+    @media only screen and (max-width: $small-up) {
+      @content;
+    }
+  }
+  @else if $point == sm {
+    @media only screen and (max-width: $small) {
+      @content;
+    }
+  }
 }
